@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CalculadoraCompleta {
@@ -57,12 +58,18 @@ public class CalculadoraCompleta {
                     break;
 
                 case 2:
-                    System.out.println("Digite o primeiro valor: ");
-                    num1 = scanner.nextDouble();
-                    System.out.println("Digite o segundo valor: ");
-                    num2 = scanner.nextDouble();
-                    resultado = num1 - num2;
-                    System.out.println("Resultado: " + resultado);
+                    try {
+                        System.out.println("Digite o primeiro valor: ");
+                        num1 = scanner.nextDouble();
+                        System.out.println("Digite o segundo valor: ");
+                        num2 = scanner.nextDouble();
+                        resultado = num1 - num2;
+                        System.out.println("Resultado: " + resultado);
+                    } catch (InputMismatchException e) {
+                        System.out.println(" Erro: Entrada invalida. Certifique-se de digitar numeros validos. ");
+                    } finally {
+                    }
+
                     break;
 
                 case 3:
