@@ -73,12 +73,26 @@ public class CalculadoraCompleta {
                     break;
 
                 case 3:
-                    System.out.println("Digite o primeiro valor: ");
-                    num1 = scanner.nextDouble();
-                    System.out.println("Digite o segundo valor: ");
-                    num2 = scanner.nextDouble();
-                    resultado = num1 * num2;
-                    System.out.println("Resultado: " + resultado);
+
+                    try {
+                        System.out.println("Digite o primeiro valor: ");
+                        num1 = scanner.nextDouble();
+
+                        System.out.println("Digite o segundo valor: ");
+                        num2 = scanner.nextDouble();
+
+                        if (num1 < 0 || num2 < 0) {
+                            throw new IllegalArgumentException("Erro: Ambos os números devem ser maiores ou iguais a zero.");
+                        }
+                        resultado = num1 * num2;
+                        System.out.println("Resultado: " + resultado);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Erro: Entrada inválida. Certifique-se de digitar números válidos.");
+                        // Limpar o buffer do scanner
+                        scanner.nextLine();
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 4:
